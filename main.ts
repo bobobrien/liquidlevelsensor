@@ -3,7 +3,7 @@ input.onButtonPressed(Button.A, function () {
     RunSensor = true
     while (RunSensor) {
         Sensing()
-        basic.pause(500)
+        basic.pause(250)
     }
 })
 function ReadPin () {

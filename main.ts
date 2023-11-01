@@ -17,7 +17,7 @@ function Sensing () {
         ReadPin()
     }
     BtnValue = Reading + Samples
-    GraphVal = BtnValue - Offset
+    GraphVal = BtnValue / Offset
     serial.writeLine("" + (GraphVal))
     led.plotBarGraph(
     GraphVal,

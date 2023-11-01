@@ -23,13 +23,24 @@ function Sensing () {
     GraphVal,
     255
     )
+    if (GraphVal < Lowest) {
+        Lowest = GraphVal
+    }
+    if (GraphVal > Highest) {
+        Highest = GraphVal
+    }
+    serial.writeValue("o.current", GraphVal)
+    serial.writeValue("o.high", Highest)
+    serial.writeValue("o.low", Lowest)
 }
 input.onButtonPressed(Button.B, function () {
     basic.showIcon(IconNames.No)
     RunSensor = false
 })
-let GraphVal = 0
 let BtnValue = 0
+let Highest = 0
+let GraphVal = 0
+let Lowest = 0
 let Offset = 0
 let RunSensor = false
 let Samples = 0
@@ -39,3 +50,6 @@ Reading = 0
 Samples = 10
 RunSensor = false
 Offset = 328
+Sensing()
+Lowest = GraphVal
+Highest = GraphVal

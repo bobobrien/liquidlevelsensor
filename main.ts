@@ -3,12 +3,13 @@ input.onButtonPressed(Button.A, function () {
     RunSensor = true
     while (RunSensor) {
         Sensing()
+        basic.pause(500)
     }
 })
 function ReadPin () {
-    pins.digitalWritePin(DigitalPin.P0, pins.analogReadPin(AnalogPin.P0))
+    pins.digitalWritePin(DigitalPin.P0, 1)
     basic.pause(0.1)
-    Reading += 1
+    Reading += pins.analogReadPin(AnalogPin.P0)
 }
 function Sensing () {
     Reading = 0
@@ -36,5 +37,5 @@ let Reading = 0
 basic.showNumber(0)
 Reading = 0
 Samples = 10
-RunSensor = true
+RunSensor = false
 Offset = 328

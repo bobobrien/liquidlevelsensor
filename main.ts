@@ -3,7 +3,7 @@ input.onButtonPressed(Button.A, function () {
     RunSensor = true
     while (RunSensor) {
         Sensing()
-        basic.pause(250)
+        basic.pause(0)
     }
 })
 function ReadPin () {
@@ -16,9 +16,8 @@ function Sensing () {
     for (let index = 0; index <= Samples; index++) {
         ReadPin()
     }
-    BtnValue = Reading + Samples
-    GraphVal = BtnValue / Offset
-    serial.writeLine("" + (GraphVal))
+    BtnValue = Reading / Samples
+    GraphVal = BtnValue - Offset
     led.plotBarGraph(
     GraphVal,
     255
@@ -47,7 +46,7 @@ let Samples = 0
 let Reading = 0
 basic.showNumber(0)
 Reading = 0
-Samples = 10
+Samples = 500
 RunSensor = false
 Offset = 328
 Sensing()
